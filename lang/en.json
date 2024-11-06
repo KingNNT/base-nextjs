@@ -1,0 +1,28 @@
+{
+  "account": "Account",
+  "confirm_password": "Confirm password",
+  "connect": "Connect",
+  "dashboard": "Dashboard",
+  "do_you_have_account": "Do you have account ?",
+  "dont_you_have_account": "Don't you have account ?",
+  "email": "Email",
+  "error": "Error",
+  "forgot_password": "Forgot password",
+  "hello": "Hello",
+  "login": "Login",
+  "login_with_facebook": "Login with Facebook",
+  "login_with_google": "Login with Google",
+  "login_with_twitter": "Login with Twitter",
+  "messages": {
+    "register_successfully": "Register successfully"
+  },
+  "password": "Password",
+  "password_confirm": "Password Confirm",
+  "register": "Register",
+  "register_with_facebook": "Register with Facebook",
+  "register_with_google": "Register with Google",
+  "register_with_twitter": "Register with Twitter",
+  "setting": "Setting",
+  "success": "Success",
+  "username": "Username"
+}

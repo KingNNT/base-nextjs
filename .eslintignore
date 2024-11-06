@@ -1,0 +1,8 @@
+/.docker
+/.git
+/.husky
+/.next
+/docs
+/node_modules
+commitlint.config.ts
+tsconfig.json

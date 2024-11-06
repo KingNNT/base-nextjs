@@ -1,0 +1,33 @@
+networks:
+  network_app:
+    driver: bridge
+
+services:
+  node:
+    container_name: ${APP_NAME}_prod_node
+    hostname: node
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: .docker/production/node/Dockerfile
+    env_file:
+      - .env
+    networks:
+      - network_app
+
+  nginx:
+    container_name: ${APP_NAME}_prod_nginx
+    hostname: nginx
+    restart: unless-stopped
+    build:
+      context: ./.docker/production/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./.docker/production/nginx/logs:/var/log/nginx/
+    env_file:
+      - .env
+    networks:
+      - network_app
+    ports:
+      - ${PUBLIC_NGINX_HTTP_PORT:-80}:${NGINX_HTTP_PORT:-80}
+      - ${PUBLIC_NGINX_HTTPS_PORT:-80}:${NGINX_HTTPS_PORT:-80}
