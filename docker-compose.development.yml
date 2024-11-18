@@ -8,8 +8,8 @@ services:
     hostname: ${APP_NAME}_node
     restart: unless-stopped
     build:
-      context: ./.docker/development/node/
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: .docker/development/node/Dockerfile
       args:
         - UID_HOST_USER=${UID_HOST_USER}
         - GID_HOST_USER=${GID_HOST_USER}

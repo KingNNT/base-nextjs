@@ -23,13 +23,9 @@ USER ${NAME_CONTAINER_USER}
 
 WORKDIR /app
 
-# RUN npm install --global yarn
-# RUN yarn set version berry && yarn set version 3.x
+ADD package.json .
+ADD yarn.lock .
+
 RUN yarn install
 
-# COPY ./start-container /usr/local/bin/start-container
-# RUN chmod +x /usr/local/bin/start-container
-
 EXPOSE 3000
-
-# ENTRYPOINT ["start-container"]
