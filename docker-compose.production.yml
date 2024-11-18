@@ -5,7 +5,7 @@ networks:
 services:
   node:
     container_name: ${APP_NAME}_prod_node
-    hostname: node
+    hostname: ${APP_NAME}_prod_node
     restart: unless-stopped
     build:
       context: .
@@ -17,7 +17,7 @@ services:
 
   nginx:
     container_name: ${APP_NAME}_prod_nginx
-    hostname: nginx
+    hostname: ${APP_NAME}_prod_nginx
     restart: unless-stopped
     build:
       context: ./.docker/production/nginx

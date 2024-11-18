@@ -5,7 +5,7 @@ networks:
 services:
   node:
     container_name: ${APP_NAME}_node
-    hostname: node
+    hostname: ${APP_NAME}_node
     restart: unless-stopped
     build:
       context: ./.docker/development/node/
