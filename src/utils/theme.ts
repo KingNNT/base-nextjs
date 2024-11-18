@@ -1,4 +1,4 @@
-import { ValueOf } from "@/helpers";
+import { ValueOf } from "@/types";
 import {
   DarkThemeToken,
   DefaultThemeToken,

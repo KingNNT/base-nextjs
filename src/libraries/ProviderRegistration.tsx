@@ -17,7 +17,7 @@ const ProviderRegistration: React.FC<IProviderProps> = ({ children }) => {
 
   return (
     <AntdRegistry>
-      <ConfigProvider theme={getAntdTheme()}>
+      <ConfigProvider theme={getAntdTheme(appState.theme)}>
         <IntlProvider
           defaultLocale="en"
           locale={intlIns.locale}

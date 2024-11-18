@@ -10,9 +10,9 @@ const LocaleLayout: React.FC<ILocaleLayoutProps> = ({ children }) => {
   useApp();
 
   return (
-    <Layout>
-      <>{children}</>
-    </Layout>
+    <>
+      <Layout className="locale-layout">{children}</Layout>
+    </>
   );
 };
 
