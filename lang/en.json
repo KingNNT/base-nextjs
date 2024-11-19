@@ -7,6 +7,11 @@
   "dont_you_have_account": "Don't you have account ?",
   "email": "Email",
   "error": "Error",
+  "errors": {
+    "validation": {
+      "required": "{field} is required"
+    }
+  },
   "forgot_password": "Forgot password",
   "hello": "Hello",
   "login": "Login",
