@@ -26,7 +26,7 @@ import {
   SectionModalEdit,
 } from "./_sections";
 
-const TypeListPage = () => {
+const SamplePage = () => {
   const intl = useIntl();
 
   const appLocale = useAppSelector((state) => state.app.locale);
@@ -192,4 +192,4 @@ const TypeListPage = () => {
   );
 };
 
-export default TypeListPage;
+export default SamplePage;
