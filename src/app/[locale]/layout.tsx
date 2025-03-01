@@ -2,7 +2,7 @@
 
 import { Layout } from "antd";
 import React, { PropsWithChildren } from "react";
-import useApp from "@/hooks/useApp";
+import { useApp } from "./hooks";
 
 interface ILocaleLayoutProps extends PropsWithChildren {}
 

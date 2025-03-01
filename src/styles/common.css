@@ -1,0 +1,8 @@
+.min-h-content-screen {
+  --heightHeader: 56px;
+  --heightBreadcrumb: 36px;
+  --heightFooter: 60px;
+  min-height: calc(
+    100vh - var(--heightHeader) - var(--heightBreadcrumb) - var(--heightFooter)
+  ) !important;
+}

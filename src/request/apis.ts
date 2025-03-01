@@ -1,17 +1,7 @@
-import { IResponse } from "@/types";
-import { fetchAPI } from "./instance";
+export class BaseApis {
+  protected endpoint: string;
 
-export class Apis {
-  constructor() {
-    //
-  }
-
-  public async get() {
-    const r = await fetchAPI<IResponse>(`xxx/assistant`, {
-      method: "GET",
-    });
-    return r;
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
   }
 }
-const apis = new Apis();
-export default apis;

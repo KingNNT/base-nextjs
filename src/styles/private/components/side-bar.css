@@ -1,0 +1,6 @@
+@layer components {
+  .sidebar {
+    @apply px-4 py-2 md:px-0 md:py-0;
+    @apply bg-gray-800;
+  }
+}

@@ -1,0 +1,7 @@
+/* (private)/_components/BreadCrumbComponent */
+
+@layer components {
+  .private-components-breadcrumb-component {
+    @apply px-8 py-2;
+  }
+}

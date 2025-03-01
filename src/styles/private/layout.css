@@ -1,0 +1,11 @@
+@layer components {
+  .private-layout {
+    .private-layout__content {
+      .private-layout__content__layout {
+        .private-layout__content__layout__content {
+          @apply p-4;
+        }
+      }
+    }
+  }
+}

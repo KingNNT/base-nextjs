@@ -22,9 +22,12 @@ export const appSlice = createSlice({
     setIsBooted: (state, action: PayloadAction<boolean>) => {
       state.isBooted = action.payload;
     },
+    setLocale: (state, action: PayloadAction<LocaleSupport>) => {
+      state.locale = action.payload;
+    },
   },
 });
 
-export const { setIsBooted } = appSlice.actions;
+export const { setIsBooted, setLocale } = appSlice.actions;
 
 export default appSlice.reducer;

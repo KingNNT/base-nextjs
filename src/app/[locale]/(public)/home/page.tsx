@@ -1,15 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useIntl } from "react-intl";
+import { SectionIntroduction } from "./_sections";
 
 const HomePage = () => {
-  const intl = useIntl();
-
   return (
     <>
       <motion.div className="public-home">
-        {intl.formatMessage({ id: "hello" })}
+        <SectionIntroduction />
       </motion.div>
     </>
   );

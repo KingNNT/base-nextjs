@@ -10,6 +10,11 @@ const CommonThemeToken: ThemeConfig = {
     screenXL: UIBreakPoint.xl,
     screenXXL: UIBreakPoint.xxl,
   },
+  components: {
+    Layout: {
+      triggerHeight: 60,
+    },
+  },
 };
 
 export const DefaultThemeToken: ThemeConfig = {

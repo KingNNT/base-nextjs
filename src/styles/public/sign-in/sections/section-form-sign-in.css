@@ -1,0 +1,17 @@
+@layer components {
+  .public-sign-in-sections-section-form-sign-in {
+    @apply min-w-[320px];
+
+    .wrapper-container {
+      @apply flex justify-center items-center;
+
+      .form-sign-in {
+        @apply w-full;
+
+        .form-item__btn {
+          @apply flex justify-end items-center;
+        }
+      }
+    }
+  }
+}

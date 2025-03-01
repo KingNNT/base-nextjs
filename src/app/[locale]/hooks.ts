@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "@/libraries/redux/hooks";
 import { setIsBooted } from "@/libraries/redux/features/app/appSlice";
 
-const useApp = () => {
+export const useApp = () => {
   const dispatch = useAppDispatch();
 
   const init = () => {
@@ -16,5 +16,3 @@ const useApp = () => {
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
   }, []);
 };
-
-export default useApp;

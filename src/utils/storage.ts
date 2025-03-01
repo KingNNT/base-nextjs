@@ -5,7 +5,7 @@ export type StoreValue<T> = {
   expiredAt?: Dayjs | Date;
 };
 
-export const Storage = {
+export const StorageUtil = {
   get<T>(key: string) {
     const value = this.getDetail<T>(key);
     return value ? value.value : null;

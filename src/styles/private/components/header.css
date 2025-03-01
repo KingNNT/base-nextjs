@@ -1,0 +1,6 @@
+@layer components {
+  .private-component-header {
+    @apply h-full;
+    @apply flex justify-end items-center;
+  }
+}

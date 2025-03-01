@@ -1,12 +1,44 @@
+import { CACHE_KEYS } from "@/constants";
+import { IResponse } from "@/types";
+import { StorageUtil } from "@/utils";
+
+const DEFAULT_REQUEST: RequestInit = {
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+};
+
 export const fetchAPI = async <R>(url: URL | string, reqInit?: RequestInit) => {
-  const defaultRequestInit: RequestInit = {
-    headers: {
-      "cache-control": "no-cache",
-    },
+  const requestApi: RequestInit = {
+    ...reqInit,
   };
-  const res = await fetch(url, { ...defaultRequestInit, ...reqInit });
+
+  if (reqInit?.headers) {
+    requestApi.headers = {
+      ...DEFAULT_REQUEST.headers,
+      ...reqInit.headers,
+    };
+  } else {
+    requestApi.headers = {
+      ...DEFAULT_REQUEST.headers,
+    };
+  }
+
+  const accessToken = StorageUtil.get(CACHE_KEYS.ACCESS_TOKEN);
+
+  if (accessToken) {
+    requestApi.headers = {
+      ...requestApi.headers,
+      ...{ Authorization: `Bearer ${accessToken}` },
+    };
+  }
+
+  const res = await fetch(url, requestApi);
   if (!res.ok) {
-    throw new Error("HTTP status failed");
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const msg: IResponse<null, any> = await res.json();
+    throw new Error(JSON.stringify(msg.errors));
   }
 
   try {

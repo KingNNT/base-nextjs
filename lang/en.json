@@ -3,8 +3,6 @@
   "confirm_password": "Confirm password",
   "connect": "Connect",
   "dashboard": "Dashboard",
-  "do_you_have_account": "Do you have account ?",
-  "dont_you_have_account": "Don't you have account ?",
   "email": "Email",
   "error": "Error",
   "errors": {
@@ -29,5 +27,12 @@
   "register_with_twitter": "Register with Twitter",
   "setting": "Setting",
   "success": "Success",
-  "username": "Username"
+  "username": "Username",
+  "did_you_have_account": "Did you have account ?",
+  "did_not_you_have_account": "Didn't you have account ?",
+  "user": "User",
+  "submit": "Submit",
+  "english": "English",
+  "vietnamese": "Tiếng Việt",
+  "samples": "Samples"
 }

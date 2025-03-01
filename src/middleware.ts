@@ -1,31 +1,38 @@
-import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { LocaleSupport } from "./enums";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname;
-  const pathArr = path.split("/");
+  const url = request.nextUrl;
+  const pathname = url.pathname;
 
-  const redirectToHome = (oldPath: URL) => {
-    if (pathArr.length === 3 && pathArr[2] === "") {
-      const url = oldPath + "home";
-      return NextResponse.redirect(url);
-    }
-    return NextResponse.redirect(oldPath);
-  };
+  const SUPPORTED_LOCALES = [LocaleSupport.EN, LocaleSupport.VI];
+  const DEFAULT_LOCALE = LocaleSupport.EN;
 
-  const isPathLanguageSupport = Object.keys(LocaleSupport).some(
-    (i) => i === pathArr[1],
-  );
-  if (isPathLanguageSupport) {
-    return NextResponse.next();
+  // Check if the user accessed only the domain (e.g., example.com → redirect to /dashboard)
+  if (pathname === "/") {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
-  const currentLanguage = "en";
-  pathArr.splice(1, 0, currentLanguage);
-  const newPath = pathArr.join("/");
-  const newURL = new URL(newPath, request.nextUrl.origin);
-  return redirectToHome(newURL);
+
+  // Extract locale from the URL (first segment)
+  const pathSegments = pathname.split("/");
+  const hasLocale = SUPPORTED_LOCALES.includes(
+    pathSegments[1] as LocaleSupport,
+  );
+
+  if (!hasLocale) {
+    // Get locale from cookies or use the default
+    const cookies = request.cookies;
+    const savedLocale = cookies.get("NEXT_LOCALE")?.value || DEFAULT_LOCALE;
+
+    // Redirect to the same path but with locale prefix
+    const newUrl = new URL(`/${savedLocale}${pathname}`, request.url);
+    const response = NextResponse.redirect(newUrl);
+    return response;
+  }
+
+  // Continue to the requested page if everything is fine
+  return NextResponse.next();
 }
 
 // See "Matching Paths" below to learn more
@@ -33,13 +40,12 @@ export const config = {
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
-     * - [locale] (correct URL)
      * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico, sitemap.xml, robots.txt (metadata files)
      */
     `/`,
-    `/((?!api|en|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)`,
+    `/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)`,
   ],
 };

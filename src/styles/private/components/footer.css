@@ -1,0 +1,7 @@
+/* (private)/_components/Footer */
+
+@layer components {
+  .private-components-footer {
+    @apply text-center;
+  }
+}
