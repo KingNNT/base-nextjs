@@ -3,7 +3,7 @@
 import { useUpdateSampleMutation } from "@/libraries/redux/features/sample/sampleApi";
 import { ISample } from "@/types";
 import { Form, Input, message, Modal } from "antd";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useIntl } from "react-intl";
 
 export interface ISectionModalEditProps {
@@ -33,6 +33,14 @@ export const SectionModalEdit: React.FC<ISectionModalEditProps> = ({
     setIsModalOpenAction(false);
   };
 
+  useEffect(() => {
+    if (!record) return;
+    form.setFieldsValue({
+      id: record.id,
+      name: record.name,
+    });
+  }, [isModalOpen]);
+
   return (
     <>
       {contextHolder}
@@ -44,7 +52,7 @@ export const SectionModalEdit: React.FC<ISectionModalEditProps> = ({
         cancelButtonProps={{ loading: isLoading }}
         onCancel={() => setIsModalOpenAction(false)}
       >
-        <Form form={form} initialValues={record as ISample} layout="vertical">
+        <Form form={form} layout="vertical">
           <Form.Item
             label={`${intl.formatMessage({ id: "name" })}`}
             name="name"
